@@ -1,26 +1,71 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="EdMinds — page d'accueil" />
-  <title>EdMinds — Bienvenue</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="EdMinds Global — French courses, language test preparation, and university admission support for France and the United Kingdom." />
+  <title>EdMinds Global — Education & Guidance</title>
   <style>
-    body { font-family: system-ui, sans-serif; padding:40px; background:#f7f7fb; color:#111; }
-    header { max-width:800px; margin:0 auto; }
-    h1 { font-size:2rem; }
-    footer { margin-top:30px; font-size:0.9rem; color:#666; text-align:center; }
+    :root { --maxw:900px; --pad:28px; --muted:#6b7280; }
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial; margin:0; background:#f7f8fb; color:#111; }
+    .container { max-width:var(--maxw); margin:0 auto; padding:var(--pad); }
+    .card { background:#fff; border-radius:10px; box-shadow:0 6px 18px rgba(15,23,42,0.06); padding:20px; margin-bottom:16px; }
+    header { text-align:center; padding-top:12px; }
+    h1 { margin:0 0 8px 0; font-size:1.8rem; }
+    p.lead { margin:0 0 14px 0; color:var(--muted); }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:12px; }
+    ul { padding-left:1.1rem; }
+    .cta { display:inline-block; padding:10px 14px; border-radius:8px; background:#111827; color:#fff; text-decoration:none; }
+    footer { text-align:center; color:var(--muted); font-size:0.9rem; margin-top:18px; padding-bottom:18px; }
+    @media (max-width:520px){ .container{padding:16px} h1{font-size:1.4rem} }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Bienvenue — EdMinds</h1>
-    <p>Site déployé depuis GitHub → Vercel.</p>
-  </header>
+  <div class="container">
+    <header class="card">
+      <h1>EdMinds Global</h1>
+      <p class="lead">An education and student guidance platform — French courses, language test preparation, and university admission support for France and the UK.</p>
+      <a class="cta" href="#contact">Contact Us</a>
+    </header>
 
-  <footer>
-    © <span id="year"></span> EdMinds
-  </footer>
+    <section class="card">
+      <h2>Who we are</h2>
+      <p>EdMinds Global supports international students preparing to study in France and the United Kingdom. We provide language training, exam preparation, and step-by-step assistance for university applications and administrative procedures.</p>
+    </section>
+
+    <section class="card">
+      <h2>Our services</h2>
+      <div class="grid">
+        <div>
+          <h3>French Courses</h3>
+          <p>From A1 to B2, including DELF and TCF preparation. Group and private lessons tailored to learners.</p>
+        </div>
+        <div>
+          <h3>Admission Support</h3>
+          <p>Application guidance for universities in France and the UK: dossier preparation, program selection, and follow-up.</p>
+        </div>
+        <div>
+          <h3>Test Preparation</h3>
+          <p>Targeted IELTS, TOEFL, DELF and TCF preparation: strategies, practice tests, and mock exams.</p>
+        </div>
+        <div>
+          <h3>Educational Consulting</h3>
+          <p>Personalized study plans, visa advice, housing support, and cultural integration assistance.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="card">
+      <h2>Contact</h2>
+      <p>Email: <strong>[your-email@example.com]</strong><br>Phone: <strong>[+33 6 XX XX XX XX]</strong></p>
+      <p><small>Replace the contact details with your real email and phone number before publishing.</small></p>
+    </section>
+
+    <footer class="card">
+      <div>© <span id="year"></span> EdMinds Global — All rights reserved.</div>
+      <div><small>Address: 32 Rue Pradier, 75019 Paris</small></div>
+    </footer>
+  </div>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
