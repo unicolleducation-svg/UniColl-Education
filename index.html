@@ -1,13 +1,29 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="EdMinds — page d'accueil" />
+  <title>EdMinds — Bienvenue</title>
+  <style>
+    body { font-family: system-ui, sans-serif; padding:40px; background:#f7f7fb; color:#111; }
+    header { max-width:800px; margin:0 auto; }
+    h1 { font-size:2rem; }
+    footer { margin-top:30px; font-size:0.9rem; color:#666; text-align:center; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Bienvenue — EdMinds</h1>
+    <p>Site déployé depuis GitHub → Vercel.</p>
+  </header>
+
+  <footer>
+    © <span id="year"></span> EdMinds
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
 </html>
