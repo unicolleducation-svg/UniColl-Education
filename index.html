@@ -3,70 +3,248 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="EdMinds Global - French courses, language test preparation, and university admission support for France and the United Kingdom." />
-  <title>EdMinds Global - Education & Guidance</title>
+  <title>UniColl Education</title>
+  <meta name="description" content="UniColl Education — empowering students with the right guidance." />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:site_name" content="UniColl Education" />
+  <meta property="og:title" content="UniColl Education" />
+  <meta property="og:description" content="Empowering students with the right guidance." />
+  <meta property="og:image" content="https://your-domain.com/og-image.jpg" />
+  <meta property="og:url" content="https://your-domain.com/" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicons (put these files in /public on Vercel) -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
   <style>
-    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial; margin:0; background:#f7f8fb; color:#111; }
-    .container { max-width:900px; margin:0 auto; padding:28px; }
-    .card { background:#fff; border-radius:10px; box-shadow:0 6px 18px rgba(15,23,42,0.06); padding:20px; margin-bottom:16px; }
-    header { text-align:center; padding-top:12px; }
-    h1 { margin:0 0 8px 0; font-size:1.8rem; }
-    .lead { margin:0 0 14px 0; color:#6b7280; }
-    .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:12px; }
-    .cta { display:inline-block; padding:10px 14px; border-radius:8px; background:#111827; color:#fff; text-decoration:none; }
-    footer { text-align:center; color:#6b7280; font-size:0.9rem; margin-top:18px; padding-bottom:18px; }
-    @media (max-width:520px){ .container{padding:16px} h1{font-size:1.4rem} }
+    :root {
+      --bg: #ffffff;
+      --text: #0f172a; /* slate-900 */
+      --muted: #475569; /* slate-600 */
+      --border: #e5e7eb; /* gray-200 */
+      --accent: #2563eb; /* blue-600 */
+      --accent-fg: #ffffff;
+      --card: #ffffff;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: saturate(180%) blur(6px);
+    }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; gap: 16px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+    .brand img { display: block; height: 40px; width: auto; }
+    .brand-name { font-weight: 800; letter-spacing: 0.2px; }
+
+    nav.primary { display: flex; gap: 18px; align-items: center; }
+    nav.primary a { text-decoration: none; color: var(--muted); font-weight: 600; }
+    nav.primary a:hover { color: var(--text); }
+
+    .cta { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--border); text-decoration: none; font-weight: 700; }
+    .cta--primary { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); }
+    .cta--primary:hover { filter: brightness(1.05); }
+
+    /* Hero */
+    .hero { padding: 56px 0 36px; }
+    .hero .grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: center; }
+    .eyebrow { font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .1em; font-size: 12px; }
+    h1 { font-size: clamp(28px, 3.5vw, 44px); line-height: 1.15; margin: 10px 0 12px; }
+    .lead { color: var(--muted); font-size: 18px; margin-bottom: 18px; }
+
+    .panel { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 18px; }
+
+    /* Sections */
+    section { padding: 28px 0; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 18px; }
+    .card h3 { margin: 8px 0 6px; }
+    .muted { color: var(--muted); }
+
+    /* Social */
+    .social-links { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+    .social-links a { display: inline-flex; padding: 8px; border-radius: 999px; border: 1px solid var(--border); text-decoration: none; }
+    .social-links a:hover { background: #f3f4f6; }
+    .social-links svg { display: block; }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--border); padding: 26px 0; margin-top: 36px; }
+    .footer-grid { display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: center; }
+    .small { font-size: 14px; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero .grid { grid-template-columns: 1fr; }
+      .cards { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .brand img { height: 32px; }
+      .cards { grid-template-columns: 1fr; }
+      nav.primary { display: none; }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header class="card">
-      <h1>EdMinds Global</h1>
-      <p class="lead">An education and student guidance platform - French courses, language test preparation, and university admission support for France and the UK.</p>
-      <a class="cta" href="#contact">Contact Us</a>
-    </header>
+  <!-- Header -->
+  <header>
+    <div class="container header-inner">
+      <a href="/" class="brand" aria-label="UniColl Education – home">
+        <!-- Replace /logo.svg with your asset. If you put it in /public on Vercel, use /logo.svg -->
+        <img src="/logo.svg" alt="UniColl Education">
+        <span class="brand-name">UniColl Education</span>
+      </a>
+      <nav class="primary" aria-label="Primary">
+        <a href="#programs">Programs</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+        <a href="mailto:hello@your-domain.com" class="cta">Email us</a>
+        <a href="#contact" class="cta cta--primary">Get Guidance</a>
+      </nav>
+    </div>
+  </header>
 
-    <section class="card">
-      <h2>Who we are</h2>
-      <p>EdMinds Global supports international students preparing to study in France and the United Kingdom. We provide language training, exam preparation, and step-by-step assistance for university applications and administrative procedures.</p>
-    </section>
-
-    <section class="card">
-      <h2>Our services</h2>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
       <div class="grid">
         <div>
-          <h3>French Courses</h3>
-          <p>From A1 to B2, including DELF and TCF preparation. Group and private lessons tailored to learners.</p>
+          <div class="eyebrow">Student Success</div>
+          <h1>Empowering students with the right guidance</h1>
+          <p class="lead">Admissions advising, language preparation, and career mentoring tailored for your goals in France and beyond.</p>
+          <div class="social-links" aria-label="Find or follow UniColl Education">
+            <!-- Google search link (clean) -->
+            <a href="https://www.google.com/search?q=UniColl+Education" target="_blank" rel="noopener noreferrer" aria-label="Find us on Google">
+              <svg width="28" height="28" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303C33.87 31.91 29.37 35 24 35c-7.18 0-13-5.82-13-13s5.82-13 13-13c3.31 0 6.32 1.23 8.59 3.24l5.66-5.66C34.46 3.02 29.48 1 24 1 11.85 1 2 10.85 2 23s9.85 22 22 22c11 0 21-8 21-22 0-1.32-.14-2.61-.389-3.917z"/><path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.146 16.319 18.671 13 24 13c3.31 0 6.32 1.23 8.59 3.24l5.66-5.66C34.46 3.02 29.48 1 24 1 16.318 1 9.644 5.065 6.306 14.691z"/><path fill="#4CAF50" d="M24 45c5.31 0 10.23-2.03 13.91-5.34l-6.42-5.44C29.247 35.714 26.77 37 24 37c-5.342 0-9.88-3.41-11.51-8.16l-6.53 5.03C9.292 41.888 16.021 45 24 45z"/><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303c-1.08 3.112-3.353 5.56-6.413 6.88l.006.004 6.42 5.44C37.505 41.15 44 35.5 44 23c0-1.32-.14-2.61-.389-3.917z"/></svg>
+            </a>
+            <!-- Facebook page -->
+            <a href="https://www.facebook.com/EdMindsGlobal" target="_blank" rel="noopener noreferrer" aria-label="Find us on Facebook">
+              <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M22 12.07C22 6.48 17.52 2 11.93 2S2 6.48 2 12.07c0 5.01 3.66 9.17 8.44 9.96v-7.04H7.9V12.1h2.54V9.8c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.23.2 2.23.2v2.46h-1.25c-1.23 0-1.61.76-1.61 1.54v1.88h2.74l-.44 2.89h-2.3v7.04C18.34 21.24 22 17.08 22 12.07z"/></svg>
+            </a>
+            <!-- LinkedIn company -->
+            <a href="https://www.linkedin.com/company/rayonsdespoire/" target="_blank" rel="noopener noreferrer" aria-label="Find us on LinkedIn">
+              <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M19 3A2.94 2.94 0 0 1 22 6v12a2.94 2.94 0 0 1-3 3H5a2.94 2.94 0 0 1-3-3V6a2.94 2.94 0 0 1 3-3h14M8.34 18.34V9.75H5.67v8.59h2.67M7 8.5a1.55 1.55 0 1 0 0-3.1a1.55 1.55 0 0 0 0 3.1m12 9.84v-4.63c0-2.48-1.33-3.63-3.12-3.63a2.7 2.7 0 0 0-2.44 1.34h-.05V9.75h-2.67v8.59h2.67v-4.77c0-1.26.23-2.47 1.79-2.47s1.61 1.39 1.61 2.55v4.69H19Z"/></svg>
+            </a>
+          </div>
         </div>
         <div>
-          <h3>Admission Support</h3>
-          <p>Application guidance for universities in France and the UK: dossier preparation, program selection, and follow-up.</p>
-        </div>
-        <div>
-          <h3>Test Preparation</h3>
-          <p>Targeted IELTS, TOEFL, DELF and TCF preparation: strategies, practice tests, and mock exams.</p>
-        </div>
-        <div>
-          <h3>Educational Consulting</h3>
-          <p>Personalized study plans, visa advice, housing support, and cultural integration assistance.</p>
+          <div class="panel">
+            <h2 style="margin-top:0">Book a free consultation</h2>
+            <form action="#" method="post" onsubmit="event.preventDefault(); alert('Thanks! We\'ll get back to you.');">
+              <label>
+                <span class="small muted">Name</span><br />
+                <input name="name" required placeholder="Your full name" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:10px;">
+              </label>
+              <br /><br />
+              <label>
+                <span class="small muted">Email</span><br />
+                <input type="email" name="email" required placeholder="you@example.com" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:10px;">
+              </label>
+              <br /><br />
+              <label>
+                <span class="small muted">What do you need help with?</span><br />
+                <textarea name="message" rows="4" placeholder="Admissions, language prep, career…" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:10px;"></textarea>
+              </label>
+              <br /><br />
+              <button class="cta cta--primary" type="submit">Send</button>
+            </form>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="contact" class="card">
-      <h2>Contact</h2>
-      <p>Email: <strong>UniCollEducation@gmail.com</strong><br>Phone: <strong>+33 6 50 40 74 61</strong></p>
-      <p><small>EdMinds Global is project by UniColl Education </small></p>
-    </section>
+  <!-- Programs / Services -->
+  <section id="programs">
+    <div class="container">
+      <h2>Programs</h2>
+      <p class="muted">Tailored pathways and guidance for your academic and professional journey.</p>
+      <div class="cards">
+        <article class="card">
+          <h3>University Admissions</h3>
+          <p class="muted">Strategy, school selection, application review, and interview prep.</p>
+        </article>
+        <article class="card">
+          <h3>Language Preparation</h3>
+          <p class="muted">French levels A1–B2, exam training, and academic writing support.</p>
+        </article>
+        <article class="card">
+          <h3>Career Mentoring</h3>
+          <p class="muted">CV building, networking guidance, and internship/job search coaching.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-    <footer class="card">
-      <div>© <span id="year"></span> EdMinds Global - All rights reserved.</div>
-      <div><small>Address: 32 Rue Pradier, 75019 Paris</small></div>
-    </footer>
+  <!-- Optional: Facebook Page Plugin (adds weight/cookies). Uncomment if you want it. -->
+  <!--
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous"
+    src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v20.0" nonce="abc123"></script>
+  <div class="container" style="margin-top:12px;">
+    <div class="fb-page"
+      data-href="https://www.facebook.com/EdMindsGlobal"
+      data-tabs="timeline"
+      data-width="500"
+      data-small-header="false"
+      data-adapt-container-width="true"
+      data-hide-cover="false"
+      data-show-facepile="true">
+      <blockquote cite="https://www.facebook.com/EdMindsGlobal" class="fb-xfbml-parse-ignore">
+        <a href="https://www.facebook.com/EdMindsGlobal">EdMinds Global</a>
+      </blockquote>
+    </div>
   </div>
+  -->
+
+  <!-- Contact / Footer -->
+  <section id="contact">
+    <div class="container">
+      <div class="panel">
+        <h2 style="margin-top:0">Contact</h2>
+        <p class="muted">Email: <a href="mailto:hello@your-domain.com">hello@your-domain.com</a> &middot; Phone: <a href="tel:+33123456789">+33 1 23 45 67 89</a></p>
+        <div class="social-links" aria-label="Social links (footer)">
+          <a href="https://www.google.com/search?q=UniColl+Education" target="_blank" rel="noopener noreferrer" aria-label="Find us on Google">
+            <svg width="24" height="24" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303C33.87 31.91 29.37 35 24 35c-7.18 0-13-5.82-13-13s5.82-13 13-13c3.31 0 6.32 1.23 8.59 3.24l5.66-5.66C34.46 3.02 29.48 1 24 1 11.85 1 2 10.85 2 23s9.85 22 22 22c11 0 21-8 21-22 0-1.32-.14-2.61-.389-3.917z"/><path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.146 16.319 18.671 13 24 13c3.31 0 6.32 1.23 8.59 3.24l5.66-5.66C34.46 3.02 29.48 1 24 1 16.318 1 9.644 5.065 6.306 14.691z"/><path fill="#4CAF50" d="M24 45c5.31 0 10.23-2.03 13.91-5.34l-6.42-5.44C29.247 35.714 26.77 37 24 37c-5.342 0-9.88-3.41-11.51-8.16l-6.53 5.03C9.292 41.888 16.021 45 24 45z"/><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303c-1.08 3.112-3.353 5.56-6.413 6.88l.006.004 6.42 5.44C37.505 41.15 44 35.5 44 23c0-1.32-.14-2.61-.389-3.917z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/EdMindsGlobal" target="_blank" rel="noopener noreferrer" aria-label="Find us on Facebook">
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M22 12.07C22 6.48 17.52 2 11.93 2S2 6.48 2 12.07c0 5.01 3.66 9.17 8.44 9.96v-7.04H7.9V12.1h2.54V9.8c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.23.2 2.23.2v2.46h-1.25c-1.23 0-1.61.76-1.61 1.54v1.88h2.74l-.44 2.89h-2.3v7.04C18.34 21.24 22 17.08 22 12.07z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/rayonsdespoire/" target="_blank" rel="noopener noreferrer" aria-label="Find us on LinkedIn">
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M19 3A2.94 2.94 0 0 1 22 6v12a2.94 2.94 0 0 1-3 3H5a2.94 2.94 0 0 1-3-3V6a2.94 2.94 0 0 1 3-3h14M8.34 18.34V9.75H5.67v8.59h2.67M7 8.5a1.55 1.55 0 1 0 0-3.1a1.55 1.55 0 0 0 0 3.1m12 9.84v-4.63c0-2.48-1.33-3.63-3.12-3.63a2.7 2.7 0 0 0-2.44 1.34h-.05V9.75h-2.67v8.59h2.67v-4.77c0-1.26.23-2.47 1.79-2.47s1.61 1.39 1.61 2.55v4.69H19Z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="small muted">© <span id="y"></span> UniColl Education. All rights reserved.</div>
+      <div class="small"><a href="#">Privacy</a> · <a href="#">Terms</a></div>
+    </div>
+  </footer>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // Set current year in footer
+    document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
