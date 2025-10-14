@@ -27,72 +27,58 @@
       --text: #0f172a; /* slate-900 */
       --muted: #475569; /* slate-600 */
       --border: #e5e7eb; /* gray-200 */
-      --accent: #7c3aed; /* violet-600 */
-      --accent-2: #06b6d4; /* cyan-500 */
-      --accent-3: #f59e0b; /* amber-500 */
-      --accent-fg: #ffffff;
+      --brand: #0a66c2; /* header color */
+      --brand-fg: #ffffff; /* header text */
+      --accent: #f59e0b; /* headings & buttons */
       --card: #ffffff;
+      --hero-bg: #f8fafc; /* soft section bg */
     }
     * { box-sizing: border-box; }
     html, body { height: 100%; }
-    body {
-      margin: 0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      color: var(--text);
-      background: var(--bg);
-      line-height: 1.6;
-    }
+    body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; color: var(--text); background: var(--bg); line-height: 1.6; }
     a { color: inherit; }
     .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
     /* Header */
-    header {
-      position: sticky; top: 0; z-index: 50;
-      border-bottom: 1px solid var(--border);
-      background: rgba(255,255,255,0.9);
-      backdrop-filter: saturate(180%) blur(6px);
-    }
+    header { position: sticky; top: 0; z-index: 50; border-bottom: 1px solid var(--border); background: var(--brand); color: var(--brand-fg); }
     .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; gap: 16px; }
-    .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
-    .brand img { display: block; height: 40px; width: auto; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--brand-fg); }
+    .site-logo { display:block; height:55px; width:auto; object-fit:contain; }
     .brand-name { font-weight: 800; letter-spacing: 0.2px; }
 
     nav.primary { display: flex; gap: 18px; align-items: center; }
-    nav.primary a { text-decoration: none; color: var(--muted); font-weight: 600; }
-    nav.primary a:hover { color: var(--text); }
+    nav.primary a { text-decoration: none; color: var(--brand-fg); font-weight: 700; opacity:.95; }
+    nav.primary a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
 
-    .cta { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 12px; border: 1px solid var(--border); text-decoration: none; font-weight: 700; }
-    .cta--primary { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: var(--accent-fg); border-color: transparent; box-shadow: 0 6px 16px rgba(124,58,237,.25); }
-    .cta--primary:hover { filter: brightness(1.06); }
+    .cta { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--border); text-decoration: none; font-weight: 700; }
 
     /* Hero */
-    .hero { padding: 64px 0 40px; background: linear-gradient(180deg, rgba(124,58,237,.08), rgba(6,182,212,.06), transparent 60%); }
+    .hero { padding: 56px 0 40px; background: var(--hero-bg); }
     .hero .grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: center; }
-    .eyebrow { font-weight: 800; color: var(--accent-2); text-transform: uppercase; letter-spacing: .12em; font-size: 12px; }
+    .eyebrow { font-weight: 800; color: var(--brand); text-transform: uppercase; letter-spacing: .12em; font-size: 12px; }
     h1, h2, h3 { line-height: 1.15; }
-    h1 { font-size: clamp(30px, 3.7vw, 48px); margin: 10px 0 12px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    h1 { font-size: clamp(30px, 3.7vw, 46px); margin: 10px 0 12px; color: var(--accent); }
     .lead { color: var(--muted); font-size: 18px; margin-bottom: 18px; }
 
-    .panel { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 18px; box-shadow: 0 8px 28px rgba(2,6,23,.06); }
+    .panel { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 18px; box-shadow: 0 8px 28px rgba(2,6,23,.06); }
 
     /* Sections */
     section { padding: 32px 0; }
-    .section-title { font-size: clamp(22px, 2.4vw, 32px); margin: 0 0 6px; }
-    .section-title.colorful { background: linear-gradient(90deg, var(--accent), var(--accent-3)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .section-title { font-size: clamp(22px, 2.4vw, 32px); margin: 0 0 6px; color: var(--accent); }
     .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 18px; box-shadow: 0 6px 18px rgba(2,6,23,.05); }
     .card h3 { margin: 8px 0 6px; }
     .muted { color: var(--muted); }
-    .badge { display:inline-block; padding: 6px 10px; border-radius: 999px; font-weight: 700; font-size: 12px; color: #fff; background: linear-gradient(135deg, var(--accent), var(--accent-2)); }
+    .badge { display:inline-block; padding: 6px 10px; border-radius: 999px; font-weight: 700; font-size: 12px; color: #fff; background: var(--brand); }
 
     /* Social */
     .social-links { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
-    .social-links a { display: inline-flex; padding: 8px; border-radius: 999px; border: 1px solid var(--border); text-decoration: none; box-shadow: 0 2px 8px rgba(2,6,23,.05); }
+    .social-links a { display: inline-flex; padding: 8px; border-radius: 999px; border: 1px solid var(--border); text-decoration: none; box-shadow: 0 2px 8px rgba(2,6,23,.05); background:#fff; }
     .social-links a:hover { background: #f3f4f6; }
     .social-circle { width: 28px; height: 28px; border-radius: 50%; display:grid; place-items:center; }
     .fb { background:#1877f2; }
     .li { background:#0a66c2; }
-    .gg { background: conic-gradient(#ea4335 0 25%, #fbbc05 25% 50%, #34a853 50% 75%, #4285f4 75% 100%); }
+    .gg { background:#fff; border:1px solid #e5e7eb; }
     .social-links svg { display:block; }
 
     /* Lists */
@@ -105,15 +91,8 @@
     .small { font-size: 14px; }
 
     /* Responsive */
-    @media (max-width: 900px) {
-      .hero .grid { grid-template-columns: 1fr; }
-      .cards { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 640px) {
-      .brand img { height: 32px; }
-      .cards { grid-template-columns: 1fr; }
-      nav.primary { display: none; }
-    }
+    @media (max-width: 900px) { .hero .grid { grid-template-columns: 1fr; } .cards { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 640px) { .site-logo { height: 40px; } .cards { grid-template-columns: 1fr; } nav.primary { display: none; } }
   </style>
 </head>
 <body>
@@ -121,18 +100,14 @@
   <header>
     <div class="container header-inner">
       <a href="/" class="brand" aria-label="EdMinds Global by UniColl Education – home">
-        <!-- Replace /logo.svg with your asset. If you put it in /public on Vercel, use /logo.svg -->
-        <img src="/logo.svg" alt="EdMinds Global by UniColl Education">
+        <img src="/edmindsgloballogo.png" alt="EdMinds Global by UniColl Education" class="site-logo">
         <span class="brand-name">EdMinds Global by UniColl Education</span>
       </a>
       <nav class="primary" aria-label="Primary">
         <a href="#france">Study in France</a>
-        <a href="#services">Services</a>
         <a href="#uk">Study in UK</a>
         <a href="#languages">Language School</a>
         <a href="#career">Career Consultancy</a>
-        <a href="mailto:UniCollEducation@gmail.com?subject=Inquiry%20from%20Website" class="cta">Email us</a>
-        <a href="mailto:UniCollEducation@gmail.com?subject=Book%20a%20free%20consultation&body=Hi%20EdMinds%20Global%20by%20UniColl%2C%0A%0AI%27d%20like%20to%20book%20a%20free%20consultation.%20Here%20are%20my%20details%3A%0A-%20Name%3A%0A-%20Country%3A%0A-%20Target%20intake%3A%0A-%20Program%20interest%3A%0A%0AThanks!" class="cta cta--primary">Book a free consultation</a>
       </nav>
     </div>
   </header>
@@ -147,29 +122,22 @@
           <p class="lead">Processed by advisors who studied at top universities and now live locally. We know the system—because we used it.</p>
           <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
             <span class="badge">Registered in France</span>
-            <span class="badge" style="background:linear-gradient(135deg,var(--accent-2),var(--accent-3));">EdMinds Global by UniColl Education</span>
           </div>
           <div style="height:10px"></div>
           <div class="social-links" aria-label="Find or follow us">
-            <a href="https://www.google.com/search?q=UniColl+Education" target="_blank" rel="noopener noreferrer" aria-label="Find us on Google"><span class="social-circle gg" aria-hidden="true">
-              <!-- G icon -->
-              <svg width="16" height="16" viewBox="0 0 24 24"><path fill="#fff" d="M21.35 11.1H12v2.9h5.37c-.23 1.48-1.62 4.32-5.37 4.32c-3.24 0-5.89-2.67-5.89-5.97s2.65-5.97 5.89-5.97c1.84 0 3.07.78 3.78 1.45l2.58-2.5C16.9 3.6 14.79 2.7 12 2.7C6.74 2.7 2.5 6.93 2.5 12.2s4.24 9.5 9.5 9.5c5.49 0 9.03-3.86 9.03-9.32c0-.64-.07-1.1-.18-1.28Z"/></svg>
-            </span></a>
-            <a href="https://www.facebook.com/EdMindsGlobal" target="_blank" rel="noopener noreferrer" aria-label="Find us on Facebook"><span class="social-circle fb" aria-hidden="true">
-              <!-- Facebook icon -->
-              <svg width="16" height="16" viewBox="0 0 24 24"><path fill="#fff" d="M22 12.07C22 6.48 17.52 2 11.93 2S2 6.48 2 12.07c0 5.01 3.66 9.17 8.44 9.96v-7.04H7.9V12.1h2.54V9.8c0-2.5 1.49-3.88 3.77-3.88c1.09 0 2.23.2 2.23.2v2.46h-1.25c-1.23 0-1.61.76-1.61 1.54v1.88h2.74l-.44 2.89h-2.3v7.04C18.34 21.24 22 17.08 22 12.07Z"/></svg>
-            </span></a>
-            <a href="https://www.linkedin.com/company/rayonsdespoire/" target="_blank" rel="noopener noreferrer" aria-label="Find us on LinkedIn"><span class="social-circle li" aria-hidden="true">
-              <!-- LinkedIn icon -->
-              <svg width="16" height="16" viewBox="0 0 24 24"><path fill="#fff" d="M19 3A2.94 2.94 0 0 1 22 6v12a2.94 2.94 0 0 1-3 3H5a2.94 2.94 0 0 1-3-3V6a2.94 2.94 0 0 1 3-3h14M8.34 18.34V9.75H5.67v8.59h2.67M7 8.5a1.55 1.55 0 1 0 0-3.1a1.55 1.55 0 0 0 0 3.1m12 9.84v-4.63c0-2.48-1.33-3.63-3.12-3.63a2.7 2.7 0 0 0-2.44 1.34h-.05V9.75h-2.67v8.59h2.67v-4.77c0-1.26.23-2.47 1.79-2.47s1.61 1.39 1.61 2.55v4.69H19Z"/></svg>
-            </span></a>
+            <a href="https://www.google.com/search?q=UniColl+Education" target="_blank" rel="noopener noreferrer" aria-label="Find us on Google">
+              <span class="social-circle gg" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#EA4335" d="M12 11h10v2H12z"/><path fill="#34A853" d="M12 13v7c3.9 0 7.2-2.5 8.4-6z"/><path fill="#4285F4" d="M20.4 12c0-.7-.1-1.4-.4-2H12v4h4.7c-.3 1-.9 1.9-1.7 2.5l2.6 2C19.8 17 20.4 14.7 20.4 12"/><path fill="#FBBC05" d="M12 5c1.6 0 3 .6 4.1 1.5l2.5-2.5C17 2.7 14.7 2 12 2 7.8 2 4.2 4.6 2.8 8.3l2.9 2.2C6.4 7.9 8.9 6 12 6z"/><path fill="#34A853" d="M12 22c2.7 0 5.1-.9 7-2.5l-2.6-2c-1.2.8-2.6 1.3-4.1 1.3-3.1 0-5.6-1.9-6.4-4.7L3 16.5C4.4 20.2 7.9 22 12 22z"/></svg>
+              </span>
+            </a>
+            <a href="https://www.facebook.com/EdMindsGlobal" target="_blank" rel="noopener noreferrer" aria-label="Find us on Facebook"><span class="social-circle fb" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="#fff" d="M22 12.07C22 6.48 17.52 2 11.93 2S2 6.48 2 12.07c0 5.01 3.66 9.17 8.44 9.96v-7.04H7.9V12.1h2.54V9.8c0-2.5 1.49-3.88 3.77-3.88c1.09 0 2.23.2 2.23.2v2.46h-1.25c-1.23 0-1.61.76-1.61 1.54v1.88h2.74l-.44 2.89h-2.3v7.04C18.34 21.24 22 17.08 22 12.07Z"/></svg></span></a>
+            <a href="https://www.linkedin.com/company/rayonsdespoire/" target="_blank" rel="noopener noreferrer" aria-label="Find us on LinkedIn"><span class="social-circle li" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="#fff" d="M19 3A2.94 2.94 0 0 1 22 6v12a2.94 2.94 0 0 1-3 3H5a2.94 2.94 0 0 1-3-3V6a2.94 2.94 0 0 1 3-3h14M8.34 18.34V9.75H5.67v8.59h2.67M7 8.5a1.55 1.55 0 1 0 0-3.1a1.55 1.55 0 0 0 0 3.1m12 9.84v-4.63c0-2.48-1.33-3.63-3.12-3.63a2.7 2.7 0 0 0-2.44 1.34h-.05V9.75h-2.67v8.59h2.67v-4.77c0-1.26.23-2.47 1.79-2.47s1.61 1.39 1.61 2.55v4.69H19Z"/></svg></span></a>
           </div>
         </div>
         <div>
           <div class="panel">
-            <h2 class="section-title colorful" style="margin-top:0">Book a free consultation</h2>
-            <!-- Static sites cannot send email by themselves; this mailto opens the user's email client with your address prefilled. -->
-            <form action="mailto:UniCollEducation@gmail.com" method="GET" enctype="text/plain" onsubmit="">
+            <h2 class="section-title" style="margin-top:0">Book a free consultation</h2>
+            <form action="mailto:UniCollEducation@gmail.com" method="GET" enctype="text/plain">
               <label>
                 <span class="small muted">Name</span><br />
                 <input name="Name" required placeholder="Your full name" style="width:100%;padding:12px;border:1px solid var(--border);border-radius:12px;">
@@ -185,7 +153,7 @@
                 <textarea name="Message" rows="4" placeholder="Admissions, language prep, career…" style="width:100%;padding:12px;border:1px solid var(--border);border-radius:12px;"></textarea>
               </label>
               <br /><br />
-              <button class="cta cta--primary" type="submit">Send to UniCollEducation@gmail.com</button>
+              <button class="cta" type="submit" style="background:var(--accent);color:#fff;border-color:var(--accent)">Send to UniCollEducation@gmail.com</button>
             </form>
             <p class="small muted" style="margin-top:10px">Prefer email? Write us at <a href="mailto:UniCollEducation@gmail.com">UniCollEducation@gmail.com</a></p>
           </div>
@@ -197,33 +165,25 @@
   <!-- Study in France -->
   <section id="france">
     <div class="container">
-      <h2 class="section-title colorful">Study in France</h2>
+      <h2 class="section-title">Study in France</h2>
       <p class="muted">Public universities are nearly tuition‑free. Private universities start from ~€5,000. Scholarship guidance for <strong>Eiffel Excellence</strong>, <strong>Émile Boutmy</strong>, <strong>Erasmus+</strong>, and <strong>EIT Digital</strong>. We are student‑recruitment partners of top‑ranked French public universities.</p>
       <div class="cards">
         <article class="card"><h3>Public Universities</h3><p class="muted">Low tuition, world‑class research, diverse programs in English & French.</p></article>
         <article class="card"><h3>Private Universities</h3><p class="muted">From ~€5,000. Faster decisions, industry‑linked curricula.</p></article>
         <article class="card"><h3>Scholarships</h3><p class="muted">Eiffel, Émile Boutmy, Erasmus+, EIT Digital — strategy & application review.</p></article>
       </div>
-    </div>
-  </section>
-
-  <!-- Services -->
-  <section id="services">
-    <div class="container">
-      <h2 class="section-title colorful">Our Services</h2>
-      <div class="panel">
-        <p class="muted">Quick, faster, smoother — processed by advisors who already went through the same process, studied at top French universities, and currently live in France.</p>
+      <div class="panel" style="margin-top:14px;">
+        <h3 style="margin:0 0 6px;">What we handle for France</h3>
         <ul class="clean">
-          <li><strong>University Application</strong> &nbsp;• program selection, document checklist</li>
-          <li><strong>Offer Letter</strong> &nbsp;• tracking and negotiation support</li>
-          <li><strong>Admission Interview</strong> &nbsp;• mock interviews & coaching</li>
-          <li><strong>VISA File Ready</strong> &nbsp;• complete file preparation</li>
-          <li><strong>Accommodation</strong> &nbsp;• guidance & partner options</li>
-          <li><strong>VISA Interview</strong> &nbsp;• training & confidence building</li>
-          <li><strong>Cultural Section Interview</strong> &nbsp;• Campus France preparation</li>
-          <li><strong>Embassy Interview</strong> &nbsp;• final prep & documentation</li>
+          <li><strong>University Application</strong> — program selection & document checklist</li>
+          <li><strong>Offer Letter</strong> — tracking & follow‑ups</li>
+          <li><strong>Admission Interview</strong> — mock interviews & coaching</li>
+          <li><strong>VISA File Ready</strong> — complete file preparation</li>
+          <li><strong>Accommodation</strong> — guidance & partner options</li>
+          <li><strong>VISA Interview</strong> — training & confidence building</li>
+          <li><strong>Cultural Section Interview</strong> — Campus France preparation</li>
+          <li><strong>Embassy Interview</strong> — final prep & documentation</li>
         </ul>
-        <p style="margin-top:10px"><a class="cta cta--primary" href="mailto:UniCollEducation@gmail.com?subject=I%20wish%20to%20take%20your%20services&body=Hi%2C%20please%20contact%20me%20about%20services%20for%20France%2FUK.">Wish to take our services? Contact us</a></p>
       </div>
     </div>
   </section>
@@ -231,7 +191,7 @@
   <!-- Study in UK -->
   <section id="uk">
     <div class="container">
-      <h2 class="section-title colorful">Study in the UK</h2>
+      <h2 class="section-title">Study in the UK</h2>
       <div class="cards">
         <article class="card">
           <h3>Year‑round Intakes</h3>
@@ -247,8 +207,15 @@
         </article>
       </div>
       <div class="panel" style="margin-top:14px;">
-        <p class="muted">Processed by advisors who completed master’s degrees at UK universities and live in the UK. Local representatives answer your day‑to‑day questions. <strong>No fee — completely free of charge.</strong></p>
-        <p><a class="cta" href="mailto:UniCollEducation@gmail.com?subject=Study%20in%20UK%20-%20I%27m%20interested">Contact us for UK admissions</a></p>
+        <h3 style="margin:0 0 6px;">What we handle for the UK</h3>
+        <ul class="clean">
+          <li><strong>University Application</strong> — course selection & documentation</li>
+          <li><strong>Offer Letter</strong> — quick turnaround support</li>
+          <li><strong>Visa & Financials</strong> — CAS, proof of funds, statement review</li>
+          <li><strong>Accommodation</strong> — guidance & options</li>
+          <li><strong>Credibility Interview</strong> — prep & mock sessions</li>
+        </ul>
+        <p class="muted" style="margin-top:10px;">Processed by advisors who completed master’s degrees at UK universities and live in the UK. Local representatives answer your day‑to‑day questions. <strong>No fee — completely free of charge.</strong></p>
       </div>
     </div>
   </section>
@@ -256,7 +223,7 @@
   <!-- Language School -->
   <section id="languages">
     <div class="container">
-      <h2 class="section-title colorful">Language School</h2>
+      <h2 class="section-title">Language School</h2>
       <div class="cards">
         <article class="card">
           <h3>French (A1–B1)</h3>
@@ -277,15 +244,15 @@
   <!-- Career Consultancy Abroad -->
   <section id="career">
     <div class="container">
-      <h2 class="section-title colorful">Career Consultancy Abroad</h2>
+      <h2 class="section-title">Career Consultancy Abroad</h2>
       <div class="panel">
-        <p class="muted">We help you build a standout CV, prepare for interviews, and land your first corporate role in Europe — guided by mentors currently in senior positions at top companies in your field.</p>
+        <p class="muted">We help you build a standout CV, prepare for interviews, and <strong>land your first corporate job right after graduation in the UK or Europe</strong> — guided by mentors in senior roles at top companies.</p>
         <ul class="clean">
           <li><strong>CV & LinkedIn</strong> optimization</li>
           <li><strong>Interview prep</strong> with mock sessions</li>
           <li><strong>Job matching</strong> — you submit your CV, we find aligned roles</li>
         </ul>
-        <p style="margin-top:10px"><a class="cta cta--primary" href="mailto:UniCollEducation@gmail.com?subject=Career%20Consultancy%20-%20Get%20started">Submit your CV</a></p>
+        <p style="margin-top:10px"><a class="cta" href="mailto:UniCollEducation@gmail.com?subject=Career%20Consultancy%20-%20Get%20started" style="background:var(--accent);color:#fff;border-color:var(--accent)">Submit your CV</a></p>
       </div>
     </div>
   </section>
@@ -294,10 +261,10 @@
   <section id="contact">
     <div class="container">
       <div class="panel">
-        <h2 class="section-title colorful" style="margin-top:0">Contact</h2>
+        <h2 class="section-title" style="margin-top:0">Contact</h2>
         <p class="muted">Email: <a href="mailto:UniCollEducation@gmail.com">UniCollEducation@gmail.com</a> &middot; Phone: <a href="tel:+33650407461">+33 6 50 40 74 61</a></p>
         <div class="social-links" aria-label="Social links (footer)">
-          <a href="https://www.google.com/search?q=UniColl+Education" target="_blank" rel="noopener noreferrer" aria-label="Find us on Google"><span class="social-circle gg" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="#fff" d="M21.35 11.1H12v2.9h5.37c-.23 1.48-1.62 4.32-5.37 4.32c-3.24 0-5.89-2.67-5.89-5.97s2.65-5.97 5.89-5.97c1.84 0 3.07.78 3.78 1.45l2.58-2.5C16.9 3.6 14.79 2.7 12 2.7C6.74 2.7 2.5 6.93 2.5 12.2s4.24 9.5 9.5 9.5c5.49 0 9.03-3.86 9.03-9.32c0-.64-.07-1.1-.18-1.28Z"/></svg></span></a>
+          <a href="https://www.google.com/search?q=UniColl+Education" target="_blank" rel="noopener noreferrer" aria-label="Find us on Google"><span class="social-circle gg" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24"><path fill="#EA4335" d="M12 11h10v2H12z"/><path fill="#34A853" d="M12 13v7c3.9 0 7.2-2.5 8.4-6z"/><path fill="#4285F4" d="M20.4 12c0-.7-.1-1.4-.4-2H12v4h4.7c-.3 1-.9 1.9-1.7 2.5l2.6 2C19.8 17 20.4 14.7 20.4 12"/><path fill="#FBBC05" d="M12 5c1.6 0 3 .6 4.1 1.5l2.5-2.5C17 2.7 14.7 2 12 2 7.8 2 4.2 4.6 2.8 8.3l2.9 2.2C6.4 7.9 8.9 6 12 6z"/><path fill="#34A853" d="M12 22c2.7 0 5.1-.9 7-2.5l-2.6-2c-1.2.8-2.6 1.3-4.1 1.3-3.1 0-5.6-1.9-6.4-4.7L3 16.5C4.4 20.2 7.9 22 12 22z"/></svg></span></a>
           <a href="https://www.facebook.com/EdMindsGlobal" target="_blank" rel="noopener noreferrer" aria-label="Find us on Facebook"><span class="social-circle fb" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="#fff" d="M22 12.07C22 6.48 17.52 2 11.93 2S2 6.48 2 12.07c0 5.01 3.66 9.17 8.44 9.96v-7.04H7.9V12.1h2.54V9.8c0-2.5 1.49-3.88 3.77-3.88c1.09 0 2.23.2 2.23.2v2.46h-1.25c-1.23 0-1.61.76-1.61 1.54v1.88h2.74l-.44 2.89h-2.3v7.04C18.34 21.24 22 17.08 22 12.07Z"/></svg></span></a>
           <a href="https://www.linkedin.com/company/rayonsdespoire/" target="_blank" rel="noopener noreferrer" aria-label="Find us on LinkedIn"><span class="social-circle li" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="#fff" d="M19 3A2.94 2.94 0 0 1 22 6v12a2.94 2.94 0 0 1-3 3H5a2.94 2.94 0 0 1-3-3V6a2.94 2.94 0 0 1 3-3h14M8.34 18.34V9.75H5.67v8.59h2.67M7 8.5a1.55 1.55 0 1 0 0-3.1a1.55 1.55 0 0 0 0 3.1m12 9.84v-4.63c0-2.48-1.33-3.63-3.12-3.63a2.7 2.7 0 0 0-2.44 1.34h-.05V9.75h-2.67v8.59h2.67v-4.77c0-1.26.23-2.47 1.79-2.47s1.61 1.39 1.61 2.55v4.69H19Z"/></svg></span></a>
         </div>
@@ -312,9 +279,6 @@
     </div>
   </footer>
 
-  <script>
-    // Set current year in footer
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+  <script> document.getElementById('y').textContent = new Date().getFullYear(); </script>
 </body>
 </html>
