@@ -13,15 +13,19 @@
 
   <style>
     :root {
-      --bg: #ffffff;
-      --text: #0f172a;
-      --muted: #475569;
-      --border: #e5e7eb;
-      --brand: #d32f2f; /* Red header */
-      --brand-fg: #ffffff;
-      --accent: #d32f2f; /* Red highlights */
+      /* Brand palette taken from the UniColl logo */
+      --bg: #f7f4f1;        /* soft cream background */
+      --hero-bg: #fdfaf6;   /* slightly lighter hero */
       --card: #ffffff;
-      --hero-bg: #fafafa;
+
+      --text: #1f2933;      /* main body text */
+      --muted: #6b7b87;     /* secondary text */
+      --border: #e2e8f0;
+
+      --brand: #2a5662;     /* dark teal from logo */
+      --brand-soft: #72a9aa;/* light teal from logo */
+      --brand-fg: #ffffff;
+      --accent: #f0853d;    /* warm orange from logo */
     }
 
     * { box-sizing: border-box; }
@@ -33,7 +37,8 @@
       background: var(--bg);
       line-height: 1.6;
     }
-    a { color: inherit; text-decoration: none; }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
     .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
@@ -41,62 +46,101 @@
     header {
       position: sticky; top: 0; z-index: 50;
       border-bottom: 1px solid var(--border);
-      background: var(--brand);
-      color: var(--brand-fg);
+      background: var(--bg);
+      color: var(--brand);
     }
     .header-inner {
       display: flex; align-items: center; justify-content: space-between;
       padding: 14px 0; gap: 16px;
     }
-    .brand { display: flex; align-items: center; gap: 10px; color: var(--brand-fg); font-weight: 800; }
-    .site-logo { height: 55px; width: auto; object-fit: contain; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; color: var(--brand); }
+    .site-logo { height: 50px; width: auto; object-fit: contain; }
     .brand-name { font-weight: 800; letter-spacing: 0.3px; }
 
     nav.primary { display: flex; gap: 20px; align-items: center; }
     nav.primary a {
-      color: var(--brand-fg); font-weight: 600; opacity: 0.9;
+      font-weight: 600; opacity: 0.9;
     }
-    nav.primary a:hover { opacity: 1; text-decoration: underline; }
+    nav.primary a:hover { opacity: 1; }
 
     /* Hero */
     .hero { padding: 64px 0 40px; background: var(--hero-bg); }
     .hero .grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: center; }
-    .eyebrow { font-weight: 800; color: var(--brand); text-transform: uppercase; letter-spacing: .12em; font-size: 12px; }
+    .eyebrow {
+      font-weight: 800; color: var(--accent);
+      text-transform: uppercase; letter-spacing: .12em; font-size: 12px;
+    }
     h1, h2, h3 { line-height: 1.15; }
-    h1 { font-size: clamp(30px, 3.7vw, 46px); margin: 10px 0 12px; color: var(--accent); }
+    h1 {
+      font-size: clamp(30px, 3.7vw, 46px);
+      margin: 10px 0 12px;
+      color: var(--brand);
+    }
     .lead { color: var(--muted); font-size: 18px; margin-bottom: 18px; }
 
-    .panel { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 18px; box-shadow: 0 8px 28px rgba(2,6,23,.06); }
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 8px 28px rgba(15, 23, 42, .08);
+    }
 
     /* Sections */
     section { padding: 32px 0; }
-    .section-title { font-size: clamp(22px, 2.4vw, 32px); margin: 0 0 6px; color: var(--accent); }
+    .section-title {
+      font-size: clamp(22px, 2.4vw, 32px);
+      margin: 0 0 6px;
+      color: var(--brand);
+    }
     .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 18px; box-shadow: 0 6px 18px rgba(2,6,23,.05); }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, .06);
+    }
     .card h3 { margin: 8px 0 6px; }
     .muted { color: var(--muted); }
+
     .cta {
       display: inline-block; padding: 10px 16px;
-      border-radius: 10px; background: var(--accent);
+      border-radius: 10px;
+      background: var(--accent);
       color: #fff; border: none; font-weight: 700;
       text-align: center;
+      cursor: pointer;
     }
-    .cta:hover { filter: brightness(1.1); }
+    .cta:hover { filter: brightness(1.05); }
 
     /* Social */
     .social-links { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
     .social-circle {
       width: 34px; height: 34px; border-radius: 50%;
       display: grid; place-items: center;
-      background: #fff; border: 1px solid #ddd;
+      background: #ffffff;
+      border: 1px solid var(--border);
     }
-    .fb { background: #1877f2; }
-    .li { background: #0a66c2; }
+    .fb { background: #1877f2; border-color: #1877f2; }
+    .li { background: #0a66c2; border-color: #0a66c2; }
     .fb svg, .li svg { fill: #fff; }
 
+    /* Inputs */
+    input, textarea {
+      font-family: inherit;
+    }
+
     /* Responsive */
-    @media (max-width: 900px) { .hero .grid { grid-template-columns: 1fr; } .cards { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 640px) { .site-logo { height: 40px; } .cards { grid-template-columns: 1fr; } nav.primary { display: none; } }
+    @media (max-width: 900px) {
+      .hero .grid { grid-template-columns: 1fr; }
+      .cards { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .site-logo { height: 40px; }
+      .cards { grid-template-columns: 1fr; }
+      nav.primary { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -105,7 +149,8 @@
   <header>
     <div class="container header-inner">
       <a href="/" class="brand">
-        <img src="assets/UniColl Logo.jpeg" alt="EdMinds Global by UniColl Education" class="site-logo">
+        <!-- If this is in a Next.js public/ folder, this path is correct -->
+        <img src="/UniColl%20Logo.jpeg" alt="EdMinds Global by UniColl Education" class="site-logo">
         <span class="brand-name">EdMinds Global by UniColl Education</span>
       </a>
       <nav class="primary">
@@ -123,7 +168,7 @@
       <div class="grid">
         <div>
           <div class="eyebrow">Your international education partner</div>
-          <h1>Fast, smooth admissions to France & the UK</h1>
+          <h1>Fast, smooth admissions to France &amp; the UK</h1>
           <p class="lead">Processed by advisors who studied at top universities and now live locally. We know the system—because we used it.</p>
 
           <div class="social-links" aria-label="Social links">
@@ -190,7 +235,7 @@
       <h2 class="section-title">Study in France</h2>
       <p class="muted">Public universities are nearly tuition-free. Private universities start from ~€5,000. We guide for <strong>Eiffel Excellence</strong>, <strong>Émile Boutmy</strong>, <strong>Erasmus+</strong>, and <strong>EIT Digital</strong> scholarships. We’re partners of top-ranked French public universities.</p>
       <div class="cards">
-        <article class="card"><h3>Public Universities</h3><p class="muted">Low tuition, world-class research, English & French programs.</p></article>
+        <article class="card"><h3>Public Universities</h3><p class="muted">Low tuition, world-class research, English &amp; French programs.</p></article>
         <article class="card"><h3>Private Universities</h3><p class="muted">From ~€5,000. Quick admission, modern campuses, global networks.</p></article>
         <article class="card"><h3>Scholarships</h3><p class="muted">Eiffel, Émile Boutmy, Erasmus+, EIT Digital — full guidance.</p></article>
       </div>
@@ -210,9 +255,9 @@
     <div class="container">
       <h2 class="section-title">Language School</h2>
       <div class="cards">
-        <article class="card"><h3>French (A1–B1)</h3><p class="muted">Online & in-person courses, A1–B1 levels with exam preparation.</p></article>
-        <article class="card"><h3>English Tests</h3><p class="muted">IELTS, TOEIC, TOEFL — practice & personalized training.</p></article>
-        <article class="card"><h3>Placement & Schedule</h3><p class="muted">Flexible timetable. <a href="mailto:UniCollEducation@gmail.com?subject=Language%20course%20info">Contact us.</a></p></article>
+        <article class="card"><h3>French (A1–B1)</h3><p class="muted">Online &amp; in-person courses, A1–B1 levels with exam preparation.</p></article>
+        <article class="card"><h3>English Tests</h3><p class="muted">IELTS, TOEIC, TOEFL — practice &amp; personalized training.</p></article>
+        <article class="card"><h3>Placement &amp; Schedule</h3><p class="muted">Flexible timetable. <a href="mailto:UniCollEducation@gmail.com?subject=Language%20course%20info">Contact us.</a></p></article>
       </div>
     </div>
   </section>
@@ -224,7 +269,7 @@
       <div class="panel">
         <p class="muted">We help you build a standout CV, prepare for interviews, and <strong>land your first corporate job right after graduation in the UK or Europe</strong> — guided by mentors in senior roles at top companies.</p>
         <ul>
-          <li><strong>CV & LinkedIn</strong> optimization</li>
+          <li><strong>CV &amp; LinkedIn</strong> optimization</li>
           <li><strong>Interview prep</strong> with mock sessions</li>
           <li><strong>Job matching</strong> — we find aligned roles</li>
         </ul>
