@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>UniColl Education</title>
-  <meta name="description" content="UniColl Education — Study in France & UK • Admissions, visas, language prep, and career consulting." />
+  <meta name="description" content="UniColl Education — Study in France & UK • Admissions, visas, language prep, career consulting, and student recruitment via GEC Higher Education." />
 
   <!-- Favicons -->
   <link rel="icon" href="/favicon.ico">
@@ -54,7 +54,7 @@
       padding: 14px 0; gap: 16px;
     }
     .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; color: var(--brand); }
-    .site-logo { height: 50px; width: auto; object-fit: contain; }
+    .site-logo { height: 60px; width: auto; object-fit: contain; } /* bigger logo */
     .brand-name { font-weight: 800; letter-spacing: 0.3px; }
 
     nav.primary { display: flex; gap: 20px; align-items: center; }
@@ -62,6 +62,31 @@
       font-weight: 600; opacity: 0.9;
     }
     nav.primary a:hover { opacity: 1; }
+
+    /* Mobile menu toggle */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: var(--brand);
+    }
+
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      padding: 8px 20px 12px;
+      border-top: 1px solid var(--border);
+      background: var(--bg);
+    }
+    .mobile-nav a {
+      padding: 6px 0;
+      font-weight: 600;
+    }
+    .mobile-nav.open {
+      display: flex;
+    }
 
     /* Hero */
     .hero { padding: 64px 0 40px; background: var(--hero-bg); }
@@ -137,9 +162,11 @@
       .cards { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 640px) {
-      .site-logo { height: 40px; }
+      .site-logo { height: 48px; } /* bigger than old 40px */
       .cards { grid-template-columns: 1fr; }
+
       nav.primary { display: none; }
+      .menu-toggle { display: inline-flex; }
     }
   </style>
 </head>
@@ -149,17 +176,34 @@
   <header>
     <div class="container header-inner">
       <a href="/" class="brand">
-        <!-- If this is in a Next.js public/ folder, this path is correct -->
-        <img src="/UniColl%20Logo.jpeg" alt="EdMinds Global by UniColl Education" class="site-logo">
-        <span class="brand-name">EdMinds Global by UniColl Education</span>
+        <!-- Adjust path if needed for your GitHub/public setup -->
+        <img src="/UniColl%20Logo.jpeg" alt="UniColl Education" class="site-logo">
+        <span class="brand-name">UniColl Education</span>
       </a>
+
+      <!-- Desktop nav -->
       <nav class="primary">
         <a href="#france">Study in France</a>
         <a href="#uk">Study in UK</a>
         <a href="#languages">Language School</a>
         <a href="#career">Career Consultancy</a>
+        <a href="#gec">GEC Higher Education</a>
       </nav>
+
+      <!-- Mobile menu button -->
+      <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        ☰
+      </button>
     </div>
+
+    <!-- Mobile nav -->
+    <nav class="mobile-nav" id="mobile-nav">
+      <a href="#france">Study in France</a>
+      <a href="#uk">Study in UK</a>
+      <a href="#languages">Language School</a>
+      <a href="#career">Career Consultancy</a>
+      <a href="#gec">GEC Higher Education</a>
+    </nav>
   </header>
 
   <!-- Hero -->
@@ -277,13 +321,54 @@
     </div>
   </section>
 
+  <!-- GEC Higher Education promo -->
+  <section id="gec">
+    <div class="container">
+      <h2 class="section-title">GEC Higher Education</h2>
+      <div class="panel">
+        <p class="muted">
+          UniColl Education is the legal parent organisation behind
+          <strong>GEC Higher Education</strong> — our dedicated commercial platform for
+          international student recruitment. Discover more programs, partner
+          universities, and application options directly on GEC.
+        </p>
+        <p class="muted">
+          We encourage prospective students and partners to explore GEC Higher Education
+          for the latest intakes and offers, while UniColl Education remains your
+          official legal entity and quality assurance backbone.
+        </p>
+        <a class="cta" href="https://www.gechighereducation.com/" target="_blank" rel="noopener noreferrer">
+          Visit GEC Higher Education
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer style="border-top:1px solid var(--border);padding:24px 0;text-align:center;">
-    <p class="muted small">© <span id="y"></span> EdMinds Global by UniColl Education — Registered in France. All rights reserved.</p>
+    <p class="muted small">© <span id="y"></span> UniColl Education — Registered in France. All rights reserved.</p>
   </footer>
 
   <script>
+    // Year in footer
     document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const toggleBtn = document.querySelector('.menu-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+
+    toggleBtn.addEventListener('click', () => {
+      const isOpen = mobileNav.classList.toggle('open');
+      toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    // Close mobile menu when a link is clicked
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('open');
+        toggleBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
   </script>
 
 </body>
